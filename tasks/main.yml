@@ -18,3 +18,10 @@
 - name: Start docker service
   import_tasks: start_service.yml
   when: not docker_non_root_user
+ 
+- name: run container
+  docker_container:
+    name: wartest
+    image: "{{ image }}"
+    ports: 8081:8080
+    state: started
