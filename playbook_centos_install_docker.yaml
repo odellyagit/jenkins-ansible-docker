@@ -1,4 +1,17 @@
-   - name: Install yum utils
+---
+- name: Install docker
+  hosts: web
+  become: yes
+  remote_user: codellya
+  become_method: sudo
+  gather_facts: yes
+  
+  pre_tasks:
+  - yum:
+     name: https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.13-3.1.el7.x86_64.rpm
+  
+  tasks:
+    - name: Install yum utils
       yum:
         name: yum-utils
         state: latest
@@ -55,11 +68,3 @@
         groups: docker
         append: yes
       become: yes
-
-    - name: run container
-      docker_container:
-        name: wartest
-        image: "{{ image }}"
-        ports: 8081:8080
-        state: started
-    
