@@ -3,7 +3,7 @@
   yum_repository:
     name: docker-ce-stable
     description: Docker CE Stable Repo
-    baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
+    baseurl: https://download.docker.com/linux/centos/docker-ce.repo
     gpgkey: https://download.docker.com/linux/centos/gpg
     gpgcheck: yes
 
