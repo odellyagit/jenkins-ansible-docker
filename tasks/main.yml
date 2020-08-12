@@ -1,0 +1,27 @@
+---
+
+- name: Detect proxy settings
+  set_fact:
+    calc_proxy_env: "{{ proxy_env|calculate_no_proxy }}"
+
+- name: Include Docker-CE setup
+  import_tasks: docker_ce.yml
+  when: docker_repo_type == 'ce'
+
+- name: Include CentOS docker
+  import_tasks: docker_centos.yml
+
+- name: Include User setup
+  import_tasks: user_setup.yml
+  when: docker_non_root_user
+
+- name: Start docker service
+  import_tasks: start_service.yml
+  when: not docker_non_root_user
+ 
+- name: run container
+  docker_container:
+    name: wartest
+    image: "{{ image }}"
+    ports: 8081:8080
+    state: started

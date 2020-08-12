@@ -1,0 +1,19 @@
+---
+- name: Add 'docker' group
+  group:
+    name: docker
+    state: present
+
+- name: Add ansible_user to 'docker' group
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: yes
+  register: user_to_docker_group
+
+- name: reset ssh connection to allow user changes to affect 'current login user'
+  meta: reset_connection
+
+- name: Start docker service
+  import_tasks: start_service.yml
+
