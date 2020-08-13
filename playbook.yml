@@ -6,6 +6,6 @@
   become_method: sudo
   gather_facts: yes
   roles:
-    - ansible-role-install-docker
+    - wartest
 
 
