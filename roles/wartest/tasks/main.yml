@@ -1,10 +1,10 @@
 - name: Install yum utils
   yum:
     name: yum-utils
-    state: latest
+    state: lastest
 
 - name: Install device-mapper-persistent-data
-    yum:
+    yum:  
       name: device-mapper-persistent-data
       state: latest
 
@@ -14,7 +14,7 @@
     state: latest
 
 - name: Add Docker repo
-  get_url:
+  get_url: 
     url: https://download.docker.com/linux/centos/docker-ce.repo
     dest: /etc/yum.repos.d/docer-ce.repo
   become: yes
