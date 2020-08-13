@@ -1,6 +1,6 @@
-
+---
 - name: install wartest
-  hosts: all
+  hosts: web
   become: yes
   remote_user: codellya
   become_method: sudo
