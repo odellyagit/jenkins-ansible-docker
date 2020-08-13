@@ -1,7 +1,7 @@
 - name: Install yum utils
   yum:
     name: yum-utils
-    state: lastest
+    state: latest
 
 - name: Install device-mapper-persistent-data
   yum:  
